@@ -1,0 +1,9 @@
+C:\Users\OPTiiM\source\repos\readData\readData\bin\Debug\readData.exe.config
+C:\Users\OPTiiM\source\repos\readData\readData\bin\Debug\readData.exe
+C:\Users\OPTiiM\source\repos\readData\readData\bin\Debug\readData.pdb
+C:\Users\OPTiiM\source\repos\readData\readData\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.csprojAssemblyReference.cache
+C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.csproj.CoreCompileInputs.cache
+C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.csproj.CopyComplete
+C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.exe
+C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.pdb
