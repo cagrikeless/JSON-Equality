@@ -85,10 +85,12 @@ namespace readData
                         && (tble2.Name != docs.Name)
                         && (tble2.Surname != docs.Surname))
                     {
+                        con.Open();
                         var queryString = "Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('"+ tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname +"')";
                         cmd.Dispose();
-                        cmd = new OracleCommand(queryString);
+                        cmd = new OracleCommand(queryString,con);
                         cmd.ExecuteNonQuery();
+                        con.Close();
                     }
                     else
                     {
@@ -103,10 +105,12 @@ namespace readData
                             && (tble2.Surname == docs.Surname)){ }
                         else
                         {
-                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='"+ tble2.userID +"',USERNAME='"+ tble2.Username +"',PASSWORD='" + tble2.Password +"',ADRESS='" + tble2.Address +"',DESCRIPTION='" + tble2.Description +"',PHONE='" + tble2.PhoneN +"',DEPARTMENT='" + tble2.Department +"',NAME='" + tble2.Name +"',SURNAME='" + tble2.Surname +"'";
+                            con.Open();
+                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='"+ Convert.ToInt32(tble2.userID) +"',USERNAME='"+ tble2.Username +"',PASSWORD='" + tble2.Password +"',ADRESS='" + tble2.Address +"',DESCRIPTION='" + tble2.Description +"',PHONE='" + tble2.PhoneN +"',DEPARTMENT='" + tble2.Department +"',NAME='" + tble2.Name +"',SURNAME='" + tble2.Surname +"'WHERE USERID='"+ tble2.userID +"'";
                             cmd.Dispose();
-                            cmd = new OracleCommand(queryString1);
+                            cmd = new OracleCommand(queryString1,con);
                             cmd.ExecuteNonQuery();
+                            con.Close();
                         }
                     }
                 }
