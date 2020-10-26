@@ -75,23 +75,39 @@ namespace readData
                 foreach (var elements1 in table2)
                 {
                     var tble2 = elements1;
-                    if ((docs.userID == tble2.userID) 
-                        && (docs.Username == tble2.Username) 
-                        && (docs.Password == tble2.Password) 
-                        && (docs.Address == tble2.Address) 
-                        && (docs.Description == tble2.Description) 
-                        && (docs.PhoneN == tble2.PhoneN) 
-                        && (docs.Department == tble2.Department) 
-                        && (docs.Name == tble2.Name) 
-                        && (docs.Surname == tble2.Surname))
+                    if ((tble2.userID != docs.userID)
+                        && (tble2.Username != docs.Username) 
+                        && (tble2.Password != docs.Password) 
+                        && (tble2.Address != docs.Address) 
+                        && (tble2.Description != docs.Description) 
+                        && (tble2.PhoneN != docs.PhoneN) 
+                        && (tble2.Department != docs.Department)
+                        && (tble2.Name != docs.Name)
+                        && (tble2.Surname != docs.Surname))
                     {
-                        queryString = "Insert Into ";
+                        var queryString = "Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('"+ tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname +"')";
                         cmd.Dispose();
-                        cmd = new OracleCommand();
+                        cmd = new OracleCommand(queryString);
+                        cmd.ExecuteNonQuery();
                     }
                     else
                     {
-                        
+                        if ((tble2.userID == docs.userID) 
+                            && (tble2.Username == docs.Username) 
+                            && (tble2.Password == docs.Password)
+                            && (tble2.Address == docs.Address)
+                            && (tble2.Description == docs.Description)
+                            && (tble2.PhoneN == docs.PhoneN)
+                            && (tble2.Department == docs.Department)
+                            && (tble2.Name == docs.Name)
+                            && (tble2.Surname == docs.Surname)){ }
+                        else
+                        {
+                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='"+ tble2.userID +"',USERNAME='"+ tble2.Username +"',PASSWORD='" + tble2.Password +"',ADRESS='" + tble2.Address +"',DESCRIPTION='" + tble2.Description +"',PHONE='" + tble2.PhoneN +"',DEPARTMENT='" + tble2.Department +"',NAME='" + tble2.Name +"',SURNAME='" + tble2.Surname +"'";
+                            cmd.Dispose();
+                            cmd = new OracleCommand(queryString1);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
             }

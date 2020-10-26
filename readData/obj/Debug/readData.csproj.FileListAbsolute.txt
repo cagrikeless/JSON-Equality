@@ -7,3 +7,12 @@ C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.csproj.CoreCom
 C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.csproj.CopyComplete
 C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.exe
 C:\Users\OPTiiM\source\repos\readData\readData\obj\Debug\readData.pdb
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\readData.exe.config
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\readData.exe
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\readData.pdb
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.csprojAssemblyReference.cache
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.csproj.CoreCompileInputs.cache
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.csproj.CopyComplete
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.exe
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.pdb

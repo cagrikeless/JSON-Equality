@@ -16,10 +16,10 @@ namespace readData
     {
         public static void Main(string[] args)
         {
-            process f = new process();
-            f.putInfo();
-            f.putInfo2();
-            f.ifmethods();
+            process pr = new process();
+            pr.putInfo();
+            pr.putInfo2();
+            pr.ifmethods();
 
             
         }
