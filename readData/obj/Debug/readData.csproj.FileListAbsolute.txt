@@ -16,3 +16,5 @@ C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.csproj.CoreCom
 C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.csproj.CopyComplete
 C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.exe
 C:\Users\cagri\Desktop\desktop\sv_ces\readData\obj\Debug\readData.pdb
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\cagri\Desktop\desktop\sv_ces\readData\bin\Debug\Newtonsoft.Json.xml

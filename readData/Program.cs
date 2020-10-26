@@ -17,11 +17,7 @@ namespace readData
         public static void Main(string[] args)
         {
             process pr = new process();
-            pr.putInfo();
-            pr.putInfo2();
-            pr.ifmethods();
-
-            
+            pr.equalToJson();
         }
     }
 }
