@@ -84,10 +84,14 @@ namespace readData
                         && (docs.Department == tble2.Department) 
                         && (docs.Name == tble2.Name) 
                         && (docs.Surname == tble2.Surname))
-                    { }
+                    {
+                        queryString = "Insert Into ";
+                        cmd.Dispose();
+                        cmd = new OracleCommand();
+                    }
                     else
                     {
-
+                        
                     }
                 }
             }
