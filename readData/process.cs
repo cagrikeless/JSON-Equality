@@ -73,42 +73,46 @@ namespace readData
         }
         public void equalToJson()
         {
+            putInfo();
+            putInfo2();
             string json = JsonConvert.SerializeObject(tb2);
             forTable2 deserializetable = JsonConvert.DeserializeObject<forTable2>(json);
 
             string jsonAnother = JsonConvert.SerializeObject(tb1);
             forTable1 deserializetableAnother = JsonConvert.DeserializeObject<forTable1>(jsonAnother);
-            foreach (var elements in table1)
-            {
-                var docs = elements;
-                foreach (var elements1 in table2)
-                {
-                    var tble2 = elements1;
-                    if (json != jsonAnother)
-                    {
-                        con.Open();
-                        var queryString = "Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
-                        cmd = new OracleCommand(queryString, con);
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        con.Close();
-                    }
-                    else
-                    {
-                        if (json == jsonAnother)
-                        { }
-                        else
-                        {
-                            con.Open();
-                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
-                            cmd = new OracleCommand(queryString1, con);
-                            cmd.ExecuteNonQuery();
-                            cmd.Dispose();
-                            con.Close();
-                        }
-                    }
-                }
-            }
+            Console.Write(json);
+            Console.ReadLine();
+            //foreach (var elements in table1)
+            //{
+            //    var docs = elements;
+            //    foreach (var elements1 in table2)
+            //    {
+            //        var tble2 = elements1;
+            //        if (json.ToString() != jsonAnother.ToString())
+            //        {
+            //            con.Open();
+            //            var queryString = "Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
+            //            cmd = new OracleCommand(queryString, con);
+            //            cmd.ExecuteNonQuery();
+            //            cmd.Dispose();
+            //            con.Close();
+            //        }
+            //        else
+            //        {
+            //            if (json == jsonAnother)
+            //            { }
+            //            else
+            //            {
+            //                con.Open();
+            //                var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
+            //                cmd = new OracleCommand(queryString1, con);
+            //                cmd.ExecuteNonQuery();
+            //                cmd.Dispose();
+            //                con.Close();
+            //            }
+            //        }
+            //    }
+            //}
         }
         //public void ifmethods()
         //{
