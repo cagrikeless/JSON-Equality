@@ -100,8 +100,6 @@ namespace readData
                         cmd.ExecuteNonQuery();
                         cmd.Dispose();
                         con.Close();
-                        Console.WriteLine("insertlandı");
-                        Console.ReadLine();
                     }
                     else
                     {
@@ -115,8 +113,6 @@ namespace readData
                             cmd.ExecuteNonQuery();
                             cmd.Dispose();
                             con.Close();
-                            Console.WriteLine("updatelandı");
-                            Console.ReadLine();
                         }
                     }
                 }
