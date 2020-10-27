@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -71,48 +72,55 @@ namespace readData
             con.Close();
             return table2;
         }
-        public void equalToJson()
+        public void equalJson()
         {
             putInfo();
             putInfo2();
+
             string json = JsonConvert.SerializeObject(tb2);
             forTable2 deserializetable = JsonConvert.DeserializeObject<forTable2>(json);
 
             string jsonAnother = JsonConvert.SerializeObject(tb1);
             forTable1 deserializetableAnother = JsonConvert.DeserializeObject<forTable1>(jsonAnother);
-            Console.Write(json);
-            Console.ReadLine();
-            //foreach (var elements in table1)
-            //{
-            //    var docs = elements;
-            //    foreach (var elements1 in table2)
-            //    {
-            //        var tble2 = elements1;
-            //        if (json.ToString() != jsonAnother.ToString())
-            //        {
-            //            con.Open();
-            //            var queryString = "Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
-            //            cmd = new OracleCommand(queryString, con);
-            //            cmd.ExecuteNonQuery();
-            //            cmd.Dispose();
-            //            con.Close();
-            //        }
-            //        else
-            //        {
-            //            if (json == jsonAnother)
-            //            { }
-            //            else
-            //            {
-            //                con.Open();
-            //                var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
-            //                cmd = new OracleCommand(queryString1, con);
-            //                cmd.ExecuteNonQuery();
-            //                cmd.Dispose();
-            //                con.Close();
-            //            }
-            //        }
-            //    }
-            //}
+
+
+
+            foreach (var elements in table1)
+            {
+                var docs = elements;
+                foreach (var elements1 in table2)
+                {
+                    var tble2 = elements1;
+                    if (json != jsonAnother)
+                    {
+                        //"Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
+                        con.Open();
+                        var queryString = "INSERT INTO CK_USERTABLE1(USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) VALUES ('"+ tble2.userID +"','"+ tble2.Username +"','"+ tble2.Password +"','"+ tble2.Address +"','"+ tble2.Description + "','"+ tble2.PhoneN +"','"+ tble2.Department +"','"+ tble2.Name +"','"+ tble2.Surname +"') ";
+                        cmd = new OracleCommand(queryString, con);
+                        cmd.ExecuteNonQuery();
+                        cmd.Dispose();
+                        con.Close();
+                        Console.WriteLine("insertlandı");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        if (json == jsonAnother)
+                        { }
+                        else
+                        {
+                            con.Open();
+                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
+                            cmd = new OracleCommand(queryString1, con);
+                            cmd.ExecuteNonQuery();
+                            cmd.Dispose();
+                            con.Close();
+                            Console.WriteLine("updatelandı");
+                            Console.ReadLine();
+                        }
+                    }
+                }
+            }
         }
         //public void ifmethods()
         //{

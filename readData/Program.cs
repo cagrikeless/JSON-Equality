@@ -16,18 +16,8 @@ namespace readData
     {
         public static void Main(string[] args)
         {
-            try
-            {
                 process pr = new process();
-                pr.equalToJson();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Hata: " + ex.ToString());
-                Console.ReadLine();
-            }
-
+                pr.equalJson();
         }
     }
 }
