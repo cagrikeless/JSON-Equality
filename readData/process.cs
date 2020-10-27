@@ -66,7 +66,6 @@ namespace readData
                 tb2.Names = dr[7].ToString();
                 tb2.surnames = dr[8].ToString();
 
-
                 table2.Add(tb2);
             }
             con.Close();
@@ -83,8 +82,6 @@ namespace readData
             string jsonAnother = JsonConvert.SerializeObject(tb1);
             forTable1 deserializetableAnother = JsonConvert.DeserializeObject<forTable1>(jsonAnother);
 
-
-
             foreach (var elements in table1)
             {
                 var docs = elements;
@@ -93,13 +90,40 @@ namespace readData
                     var tble2 = elements1;
                     if (json != jsonAnother)
                     {
-                        //"Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
-                        con.Open();
-                        var queryString = "INSERT INTO CK_USERTABLE1(USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) VALUES ('"+ tble2.userID +"','"+ tble2.Username +"','"+ tble2.Password +"','"+ tble2.Address +"','"+ tble2.Description + "','"+ tble2.PhoneN +"','"+ tble2.Department +"','"+ tble2.Name +"','"+ tble2.Surname +"') ";
-                        cmd = new OracleCommand(queryString, con);
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        con.Close();
+
+                        try
+                        {
+                            List<string> insertList = new List<string>();
+                            insertList.Add(tb2.userID.ToString());
+                            insertList.Add(tb2.Password);
+                            insertList.Add(tb2.Address);
+                            insertList.Add(tb2.Description);
+                            insertList.Add(tb2.PhoneN);
+                            insertList.Add(tb2.Department);
+                            insertList.Add(tb2.Name);
+                            insertList.Add(tb2.Surname);
+
+                            foreach (var inserts in insertList)
+                            {
+                                con.Open();
+                                var qString = "INSERT INTO CK_USERTABLE1(USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) VALUES ('" + inserts[0] + "','" + inserts[1] + "','" + inserts[2] + "','" + inserts[3] + "','" + inserts[4] + "','" + inserts[5] + "','" + inserts[6] + "','" + inserts[7] + "','" + inserts[8] + "')";
+                                cmd = new OracleCommand(qString, con);
+                                cmd.ExecuteNonQuery();
+                                cmd.Dispose();
+                                con.Close();
+                            }
+                            //"Insert Into CK_USERTABLE1 (USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) values ('" + tble2.userID + tble2.Username + tble2.Password + tble2.Address + tble2.Description + tble2.PhoneN + tble2.Department + tble2.Name + tble2.Surname + "')";
+                            //con.Open();
+                            //var queryString = "INSERT INTO CK_USERTABLE1(USERID,USERNAME,PASSWORD,ADRESS,DESCRIPTION,PHONE,DEPARTMENT,NAME,SURNAME) VALUES ('" + tble2.userID + "','" + tble2.Username + "','" + tble2.Password + "','" + tble2.Address + "','" + tble2.Description + "','" + tble2.PhoneN + "','" + tble2.Department + "','" + tble2.Name + "','" + tble2.Surname + "') ";
+                            //cmd = new OracleCommand(queryString, con);
+                            //cmd.ExecuteNonQuery();
+                            //cmd.Dispose();
+                            //con.Close();
+                        }
+                        catch (Exception ex)
+                        {Console.WriteLine(ex.ToString());break;}
+                        
+
                     }
                     else
                     {
@@ -107,12 +131,43 @@ namespace readData
                         { }
                         else
                         {
-                            con.Open();
-                            var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
-                            cmd = new OracleCommand(queryString1, con);
-                            cmd.ExecuteNonQuery();
-                            cmd.Dispose();
-                            con.Close();
+                            try
+                            {
+                                List<string> updateList = new List<string>();
+                                updateList.Add(tb2.userID.ToString());
+                                updateList.Add(tb2.Password);
+                                updateList.Add(tb2.Address);
+                                updateList.Add(tb2.Description);
+                                updateList.Add(tb2.PhoneN);
+                                updateList.Add(tb2.Department);
+                                updateList.Add(tb2.Name);
+                                updateList.Add(tb2.Surname);
+
+                                foreach
+                                    (var updates in updateList)
+                                {
+                                    con.Open();
+                                    var qString = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(updates[0]) + "',USERNAME='" + updates[1] + "',PASSWORD='" + updates[2] + "',ADRESS='" + updates[3] + "',DESCRIPTION='" + updates[4] + "',PHONE='" + updates[5] + "',DEPARTMENT='" + updates[6] + "',NAME='" + updates[7] + "',SURNAME='" + updates[8] +"'";
+                                    cmd = new OracleCommand(qString, con);
+                                    cmd.ExecuteNonQuery();
+                                    cmd.Dispose();
+                                    con.Close();
+                                    con.Close();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                                Console.ReadLine();
+                                break;
+                            }
+                           
+                            //con.Open();
+                            //var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
+                            //cmd = new OracleCommand(queryString1, con);
+                            //cmd.ExecuteNonQuery();
+                            //cmd.Dispose();
+                            //con.Close();
                         }
                     }
                 }
