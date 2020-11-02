@@ -17,7 +17,7 @@ namespace readData
         public static void Main(string[] args)
         {
                 process pr = new process();
-                pr.equalJson();
+                pr.deserializeJson();
         }
     }
 }

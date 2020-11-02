@@ -24,11 +24,13 @@ namespace readData
         forTable1 tb1 = new forTable1();
         forTable2 tb2 = new forTable2();
 
-        public List<forTable1> putInfo()
+
+
+        public List<forTable1> putInfo(string queryForCommand)
         {
-            string query = "SELECT * from CK_USERTABLE1";
+            
             con.Open();
-            cmd = new OracleCommand(query, con);
+            cmd = new OracleCommand(queryForCommand, con);
             OracleDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -47,11 +49,10 @@ namespace readData
             con.Close();
             return table1;
         }
-        public List<forTable2> putInfo2()
+        public List<forTable2> putInfo2(string queryForCommand)
         {
-            string query = "SELECT * from CK_USERTABLE2";
             con.Open();
-            cmd = new OracleCommand(query, con);
+            cmd = new OracleCommand(queryForCommand, con);
             OracleDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -71,21 +72,28 @@ namespace readData
             con.Close();
             return table2;
         }
-        public void equalJson()
+        public void deserializeJson()
         {
-            putInfo();
-            putInfo2();
-
             string json = JsonConvert.SerializeObject(tb2);
             forTable2 deserializetable = JsonConvert.DeserializeObject<forTable2>(json);
 
             string jsonAnother = JsonConvert.SerializeObject(tb1);
             forTable1 deserializetableAnother = JsonConvert.DeserializeObject<forTable1>(jsonAnother);
+            if (string.IsNullOrEmpty(json) && string.IsNullOrEmpty(jsonAnother))
+            {
+                throw new ArgumentException($"'{nameof(json)}' cannot be null or empty", nameof(json));
+                throw new ArgumentException($"'{nameof(jsonAnother)}' cannot be null or empty", nameof(jsonAnother));
 
-            foreach (var elements in table1)
+            }
+        }
+
+        public void islem()
+        {
+
+            foreach (forTable1 elements in table1)
             {
                 var docs = elements;
-                foreach (var elements1 in table2)
+                foreach (forTable2 elements1 in table2)
                 {
                     var tble2 = elements1;
                     if (json != jsonAnother)
@@ -121,8 +129,8 @@ namespace readData
                             //con.Close();
                         }
                         catch (Exception ex)
-                        {Console.WriteLine(ex.ToString());break;}
-                        
+                        { Console.WriteLine(ex.ToString()); break; }
+
 
                     }
                     else
@@ -147,7 +155,7 @@ namespace readData
                                     (var updates in updateList)
                                 {
                                     con.Open();
-                                    var qString = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(updates[0]) + "',USERNAME='" + updates[1] + "',PASSWORD='" + updates[2] + "',ADRESS='" + updates[3] + "',DESCRIPTION='" + updates[4] + "',PHONE='" + updates[5] + "',DEPARTMENT='" + updates[6] + "',NAME='" + updates[7] + "',SURNAME='" + updates[8] +"'";
+                                    var qString = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(updates[0]) + "',USERNAME='" + updates[1] + "',PASSWORD='" + updates[2] + "',ADRESS='" + updates[3] + "',DESCRIPTION='" + updates[4] + "',PHONE='" + updates[5] + "',DEPARTMENT='" + updates[6] + "',NAME='" + updates[7] + "',SURNAME='" + updates[8] + "'";
                                     cmd = new OracleCommand(qString, con);
                                     cmd.ExecuteNonQuery();
                                     cmd.Dispose();
@@ -161,7 +169,7 @@ namespace readData
                                 Console.ReadLine();
                                 break;
                             }
-                           
+
                             //con.Open();
                             //var queryString1 = "UPDATE CK_USERTABLE1 SET USERID='" + Convert.ToInt32(tble2.userID) + "',USERNAME='" + tble2.Username + "',PASSWORD='" + tble2.Password + "',ADRESS='" + tble2.Address + "',DESCRIPTION='" + tble2.Description + "',PHONE='" + tble2.PhoneN + "',DEPARTMENT='" + tble2.Department + "',NAME='" + tble2.Name + "',SURNAME='" + tble2.Surname + "'WHERE USERID='" + tble2.userID + "'";
                             //cmd = new OracleCommand(queryString1, con);
@@ -173,6 +181,9 @@ namespace readData
                 }
             }
         }
+
+
+
         //public void ifmethods()
         //{
         //    foreach (var elements in table1)
