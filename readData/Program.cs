@@ -16,8 +16,14 @@ namespace readData
     {
         public static void Main(string[] args)
         {
-                process pr = new process();
-                pr.deserializeJson();
+            jsonEqualityCheck jsoneqc = new jsonEqualityCheck();
+            process pr = new process();
+
+            string TabloSecimi1 = "SELECT * FROM CK_USERTABLE1";
+            string tablosecimi2 = "SELECT * FROM CK_USERTABLE2";
+            pr.putInfo(TabloSecimi1);
+            pr.putInfo2(tablosecimi2);
+            jsoneqc.deserializeJson();
         }
     }
 }
