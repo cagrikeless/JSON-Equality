@@ -16,7 +16,7 @@ namespace readData
     {
         public static void Main(string[] args)
         {
-            jsonEqualityCheck jsoneqc = new jsonEqualityCheck();
+            
             process pr = new process();
 
             string TabloSecimi1 = "SELECT * FROM CK_USERTABLE1";

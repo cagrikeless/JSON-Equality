@@ -16,7 +16,7 @@ namespace readData
 {
     public class process
     {
-       public OracleConnection con = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=ppm.optiim.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=demo)));User Id=HB_PPM_POC;Password=ppm;Pooling=true;Min Pool Size=1;Connection Lifetime=180;Max Pool Size=100;Incr Pool Size=5");
+       public OracleConnection con = new OracleConnection("CONNECTION");
        public OracleCommand cmd;
        public List<forTable1> table1 = new List<forTable1>();
        public List<forTable2> table2 = new List<forTable2>();
